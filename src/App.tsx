@@ -3,9 +3,7 @@ import {SafeAreaView, StyleSheet, Text} from 'react-native';
 import SplashScreen from 'react-native-lottie-splash-screen';
 
 const App = () => {
-  useEffect(() => {
-    setTimeout(() => SplashScreen.hide(), 2000);
-  }, []);
+  useEffect(() => SplashScreen.hide(), []);
 
   return (
     <SafeAreaView style={styles.root}>
