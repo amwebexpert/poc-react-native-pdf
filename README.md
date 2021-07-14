@@ -5,4 +5,4 @@ RN UI for the Hangman project
 
 - cd ios && pod install
 - Complete the [react-native-lottie-splash-screen](https://www.npmjs.com/package/react-native-lottie-splash-screen) iOS configuration part
-- 
+- Same for `react-native-vector-icons`, `react-native-paper`
