@@ -1,15 +1,18 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import 'react-native-gesture-handler';
 import SplashScreen from 'react-native-lottie-splash-screen';
-import { Button, Provider as PaperProvider } from 'react-native-paper';
+import { Button, Provider as PaperProvider, Text } from 'react-native-paper';
 import GameProgress from './components/gameprogress/GameProgress';
 
 const App = () => {
-  useEffect(() => SplashScreen.hide(), []);
+  const { t, i18n } = useTranslation();
   const [previousPercent, setPreviousPercent] = useState<number>(100);
   const [newPercent, setNewPercent] = useState<number>(100);
+
+  useEffect(() => SplashScreen.hide(), []);
 
   const decreaseProgress = () => {
     setPreviousPercent(newPercent);
@@ -21,10 +24,11 @@ const App = () => {
       <PaperProvider>
         <SafeAreaView style={styles.root}>
           <View style={styles.actions}>
-            <Button mode="contained" onPress={decreaseProgress}>
+            <Button mode="contained" onPress={() => i18n.changeLanguage(i18n.language === 'en' ? 'fr' : 'en')}>
               Devine quoi ?
             </Button>
           </View>
+          <Text>{t('Welcome to React')}</Text>
           <View style={styles.gameProgressWrapper}>
             <GameProgress previousPercent={previousPercent} newPercent={newPercent} />
           </View>
