@@ -1,5 +1,9 @@
 export default {
   translation: {
-    'Welcome to React': "Bienvenue dans l'application !",
+    welcome: "Bienvenue dans l'application <Devine> !",
+    lang: {
+      fr: 'Français',
+      en: 'English',
+    },
   },
 };

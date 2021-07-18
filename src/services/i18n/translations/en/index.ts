@@ -1,5 +1,9 @@
 export default {
   translation: {
-    'Welcome to React': 'Welcome to React and react-i18next',
+    welcome: 'Welcome to the <Devine> application!',
+    lang: {
+      fr: 'Français',
+      en: 'English',
+    },
   },
 };

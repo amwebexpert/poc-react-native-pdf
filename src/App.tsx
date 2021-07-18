@@ -25,10 +25,10 @@ const App = () => {
         <SafeAreaView style={styles.root}>
           <View style={styles.actions}>
             <Button mode="contained" onPress={() => i18n.changeLanguage(i18n.language === 'en' ? 'fr' : 'en')}>
-              Devine quoi ?
+              {t(`lang.${i18n.language}`)}
             </Button>
           </View>
-          <Text>{t('Welcome to React')}</Text>
+          <Text>{t('welcome')}</Text>
           <View style={styles.gameProgressWrapper}>
             <GameProgress previousPercent={previousPercent} newPercent={newPercent} />
           </View>
