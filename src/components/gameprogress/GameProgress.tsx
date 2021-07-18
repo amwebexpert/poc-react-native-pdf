@@ -1,6 +1,7 @@
 import { default as AnimatedLottieView, default as LottieView } from 'lottie-react-native';
 import React, { useEffect, useRef } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Text } from 'react-native-paper';
 
 type Props = {
   previousPercent: number;
@@ -23,14 +24,43 @@ const GameProgress = ({ previousPercent, newPercent }: Props) => {
     animation.current!.play(from, to);
   }, [animation, previousPercent, newPercent]);
 
-  return <LottieView ref={animation} style={styles.root} source={SOURCE} autoPlay={false} loop={false} speed={-0.25} />;
+  return (
+    <View style={styles.container}>
+      <View style={styles.center}>
+        <LottieView ref={animation} style={styles.behind} source={SOURCE} autoPlay={false} loop={false} speed={-0.25} />
+        <Text style={styles.percent}>{newPercent} %</Text>
+      </View>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-  root: {
+  container: {
     flex: 1,
+  },
+  center: {
+    width: '100%',
     height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  behind: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  percent: {
+    color: 'black',
+    backgroundColor: 'white',
+    paddingHorizontal: 4,
+    borderWidth: 1,
+    borderColor: 'grey',
+    marginTop: 100,
   },
 });
 
-export default React.memo(GameProgress);
+export default GameProgress;

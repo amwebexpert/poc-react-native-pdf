@@ -1,10 +1,9 @@
-import 'react-native-gesture-handler';
-import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
+import 'react-native-gesture-handler';
 import SplashScreen from 'react-native-lottie-splash-screen';
-import { Provider as PaperProvider } from 'react-native-paper';
-import { Button } from 'react-native-paper';
+import { Button, Provider as PaperProvider } from 'react-native-paper';
 import GameProgress from './components/gameprogress/GameProgress';
 
 const App = () => {
@@ -21,10 +20,19 @@ const App = () => {
     <NavigationContainer>
       <PaperProvider>
         <SafeAreaView style={styles.root}>
-          <Button icon="zodiac-sagittarius" mode="contained" onPress={decreaseProgress}>
-            Devine quoi ?
-          </Button>
-          <GameProgress previousPercent={previousPercent} newPercent={newPercent} />
+          <View style={styles.actions}>
+            <Button mode="contained" onPress={decreaseProgress}>
+              Devine quoi ?
+            </Button>
+          </View>
+          <View style={styles.gameProgressWrapper}>
+            <GameProgress previousPercent={previousPercent} newPercent={newPercent} />
+          </View>
+          <View style={styles.actions}>
+            <Button mode="contained" onPress={decreaseProgress}>
+              Devine quoi ?
+            </Button>
+          </View>
         </SafeAreaView>
       </PaperProvider>
     </NavigationContainer>
@@ -34,7 +42,11 @@ const App = () => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    justifyContent: 'center',
+  },
+  gameProgressWrapper: {
+    flex: 1,
+  },
+  actions: {
     alignItems: 'center',
   },
 });
