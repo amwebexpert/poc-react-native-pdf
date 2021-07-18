@@ -4,6 +4,8 @@ import { AppRegistry } from 'react-native';
 import App from './src/App';
 import { name as appName } from './app.json';
 
-import './src/services/i18n';
+import { initI18N } from './src/services/i18n';
+
+initI18N();
 
 AppRegistry.registerComponent(appName, () => App);
