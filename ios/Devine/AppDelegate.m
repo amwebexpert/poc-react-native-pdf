@@ -53,7 +53,7 @@ static void InitializeFlipper(UIApplication *application) {
 
   // Setup animation view
   Dynamic *t = [Dynamic new];
-  UIView *animationView = [t createAnimationViewWithRootView:rootView lottieName:@"splash"];
+  UIView *animationView = [t createAnimationViewWithRootView:rootView lottieName:@"loading"];
 
   // register LottieSplashScreen to RNSplashScreen
   [RNSplashScreen showLottieSplash:animationView inRootView:rootView];
