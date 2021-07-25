@@ -5,6 +5,8 @@
 #import <React/RCTRootView.h>
 
 #import "RNSplashScreen.h"
+#import "Devine-Swift.h"
+
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
 #import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
@@ -48,6 +50,17 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+
+  // Setup animation view
+  Dynamic *t = [Dynamic new];
+  UIView *animationView = [t createAnimationViewWithRootView:rootView lottieName:@"splash"];
+
+  // register LottieSplashScreen to RNSplashScreen
+  [RNSplashScreen showLottieSplash:animationView inRootView:rootView];
+
+  // play
+  [t playWithAnimationView:animationView];
+
   return YES;
 }
 
