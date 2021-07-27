@@ -33,7 +33,7 @@ const App = () => {
             <GameProgress previousPercent={previousPercent} newPercent={newPercent} />
           </View>
           <View style={styles.actions}>
-            <Button mode="contained" onPress={decreaseProgress}>
+            <Button icon="watch" mode="contained" onPress={decreaseProgress}>
               Devine quoi ?
             </Button>
           </View>
