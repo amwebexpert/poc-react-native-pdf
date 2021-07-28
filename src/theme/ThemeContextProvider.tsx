@@ -22,4 +22,4 @@ export const ThemeContextProvider: FC = ({ children }) => {
   return <ThemeContext.Provider value={{ isThemeDark, toggleTheme }}>{children}</ThemeContext.Provider>;
 };
 
-export const usePreferenceTheme = () => useContext(ThemeContext);
+export const useThemeContext = () => useContext(ThemeContext);

@@ -1,7 +1,8 @@
 import { default as AnimatedLottieView, default as LottieView } from 'lottie-react-native';
 import React, { useEffect, useRef } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Text } from 'react-native-paper';
+import { Text, useTheme } from 'react-native-paper';
+import { AppTheme } from '../../theme/theme';
 
 type Props = {
   previousPercent: number;
@@ -15,6 +16,7 @@ const ANIMATED_FRAMES = FRAME_MAX - FRAME_MIN;
 
 const GameProgress = ({ previousPercent, newPercent }: Props) => {
   const animation = useRef<AnimatedLottieView>(null);
+  const styles = useStyles();
 
   useEffect(() => {
     console.log({ previousPercent, newPercent });
@@ -34,33 +36,38 @@ const GameProgress = ({ previousPercent, newPercent }: Props) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  center: {
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  behind: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  percent: {
-    color: 'black',
-    backgroundColor: 'white',
-    paddingHorizontal: 4,
-    borderWidth: 1,
-    borderColor: 'grey',
-    marginTop: 100,
-  },
-});
+const useStyles = () => {
+  const theme = useTheme() as AppTheme;
+
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme.colors.background,
+    },
+    center: {
+      width: '100%',
+      height: '100%',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    behind: {
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      width: '100%',
+      height: '100%',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    percent: {
+      color: 'black',
+      backgroundColor: 'white',
+      paddingHorizontal: 4,
+      borderWidth: 1,
+      borderColor: 'grey',
+      marginTop: 100,
+    },
+  });
+};
 
 export default GameProgress;
