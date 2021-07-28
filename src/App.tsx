@@ -4,8 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import 'react-native-gesture-handler';
 import SplashScreen from 'react-native-lottie-splash-screen';
-import { Button, Provider as PaperProvider, Text } from 'react-native-paper';
+import { Button, Provider as PaperProvider, Text, ThemeProvider } from 'react-native-paper';
 import GameProgress from './components/gameprogress/GameProgress';
+import { ThemeContext, ThemeContextProvider } from './theme/ThemeContextProvider';
+import { appLightTheme, appDarkTheme } from './theme/theme';
 
 const App = () => {
   const { t, i18n } = useTranslation();
@@ -20,26 +22,45 @@ const App = () => {
   };
 
   return (
-    <NavigationContainer>
-      <PaperProvider>
-        <SafeAreaView style={styles.root}>
-          <View style={styles.actions}>
-            <Button mode="contained" onPress={() => i18n.changeLanguage(i18n.language === 'en' ? 'fr' : 'en')}>
-              {t(`lang.${i18n.language}`)}
-            </Button>
-          </View>
-          <Text>{t('welcome')}</Text>
-          <View style={styles.gameProgressWrapper}>
-            <GameProgress previousPercent={previousPercent} newPercent={newPercent} />
-          </View>
-          <View style={styles.actions}>
-            <Button icon="watch" mode="contained" onPress={decreaseProgress}>
-              Devine quoi ?
-            </Button>
-          </View>
-        </SafeAreaView>
-      </PaperProvider>
-    </NavigationContainer>
+    <ThemeContextProvider>
+      <ThemeContext.Consumer>
+        {({ isThemeDark, toggleTheme }) => {
+          const theme = isThemeDark ? appDarkTheme : appLightTheme;
+          return (
+            <ThemeProvider theme={theme}>
+              <NavigationContainer theme={theme}>
+                <SafeAreaView style={styles.root}>
+                  <PaperProvider theme={theme}>
+                    <View style={[styles.actions, { backgroundColor: theme.colors.background }]}>
+                      <Button
+                        mode="contained"
+                        theme={theme}
+                        onPress={() => i18n.changeLanguage(i18n.language === 'en' ? 'fr' : 'en')}>
+                        {t(`lang.${i18n.language}`)}
+                      </Button>
+                      <Button theme={theme} mode="contained" onPress={toggleTheme}>
+                        Theme
+                      </Button>
+                    </View>
+                    <Text theme={theme} style={{ backgroundColor: theme.colors.background }}>
+                      {t('welcome')}
+                    </Text>
+                    <View style={styles.gameProgressWrapper}>
+                      <GameProgress previousPercent={previousPercent} newPercent={newPercent} />
+                    </View>
+                    <View style={styles.actions}>
+                      <Button theme={theme} icon="watch" mode="contained" onPress={decreaseProgress}>
+                        Devine quoi ?
+                      </Button>
+                    </View>
+                  </PaperProvider>
+                </SafeAreaView>
+              </NavigationContainer>
+            </ThemeProvider>
+          );
+        }}
+      </ThemeContext.Consumer>
+    </ThemeContextProvider>
   );
 };
 
