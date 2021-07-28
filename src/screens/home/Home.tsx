@@ -53,13 +53,13 @@ const useStyles = () => {
   return StyleSheet.create({
     root: {
       flex: 1,
+      backgroundColor: theme.colors.background,
     },
     gameProgressWrapper: {
       flex: 1,
     },
     actions: {
       alignItems: 'center',
-      backgroundColor: theme.colors.background,
     },
   });
 };
