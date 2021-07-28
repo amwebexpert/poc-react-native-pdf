@@ -19,10 +19,8 @@ const GameProgress = ({ previousPercent, newPercent }: Props) => {
   const styles = useStyles();
 
   useEffect(() => {
-    console.log({ previousPercent, newPercent });
     const from = (previousPercent / 100) * ANIMATED_FRAMES + FRAME_MIN;
     const to = (newPercent / 100) * ANIMATED_FRAMES + FRAME_MIN;
-    console.log({ from, to });
     animation.current!.play(from, to);
   }, [animation, previousPercent, newPercent]);
 
