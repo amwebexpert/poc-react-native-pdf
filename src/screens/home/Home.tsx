@@ -32,6 +32,7 @@ const Home = () => {
         <Button mode="contained" onPress={toggleTheme}>
           Theme
         </Button>
+
         <Text>{t('welcome')}</Text>
 
         <Button icon="watch" mode="contained" onPress={decreaseProgress}>
