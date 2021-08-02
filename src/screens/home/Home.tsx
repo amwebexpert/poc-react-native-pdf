@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import 'react-native-gesture-handler';
-import SplashScreen from 'react-native-lottie-splash-screen';
 import Config from 'react-native-config';
 import { Button, Surface, Text, useTheme } from 'react-native-paper';
 import GameProgress from '../../components/gameprogress/GameProgress';
@@ -15,8 +14,6 @@ const Home = () => {
   const { t, i18n } = useTranslation();
   const [previousPercent, setPreviousPercent] = useState<number>(100);
   const [newPercent, setNewPercent] = useState<number>(100);
-
-  useEffect(() => SplashScreen.hide(), []);
 
   const decreaseProgress = () => {
     setPreviousPercent(newPercent);
