@@ -3,13 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import 'react-native-gesture-handler';
 import SplashScreen from 'react-native-lottie-splash-screen';
-import { Button, Provider as PaperProvider, Surface, Text, useTheme } from 'react-native-paper';
+import Config from 'react-native-config';
+import { Button, Surface, Text, useTheme } from 'react-native-paper';
 import GameProgress from '../../components/gameprogress/GameProgress';
 import { AppTheme } from '../../theme/theme';
 import { useThemeContext } from '../../theme/ThemeContextProvider';
 
 const Home = () => {
-  const theme = useTheme() as AppTheme;
   const styles = useStyles();
   const { toggleTheme } = useThemeContext();
   const { t, i18n } = useTranslation();
@@ -34,8 +34,9 @@ const Home = () => {
         </Button>
 
         <Text>{t('welcome')}</Text>
+        <Text>Environment: {Config.ENV_NAME}</Text>
 
-        <Button icon="watch" mode="contained" onPress={decreaseProgress}>
+        <Button icon="home" mode="contained" onPress={decreaseProgress}>
           Devine quoi ?
         </Button>
       </View>
