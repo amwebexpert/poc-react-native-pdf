@@ -1,5 +1,7 @@
 # devine
-RN UI for the Hangman project
+
+POC for iOS and Android - View PDF files natively
+
 
 ## Commands
 
