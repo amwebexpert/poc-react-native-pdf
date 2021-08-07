@@ -1,4 +1,4 @@
-# devine
+# POC react-native-pdf
 
 POC for iOS and Android - View PDF files natively
 
