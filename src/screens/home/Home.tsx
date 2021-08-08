@@ -26,6 +26,7 @@ const useStyles = () => {
       padding: 2,
       borderColor: 'navy',
       borderWidth: 1,
+      backgroundColor: 'white',
     },
   });
 };
