@@ -25,8 +25,6 @@ const PDFViewer = ({ uri }: Props) => {
 const styles = StyleSheet.create({
   pdf: {
     flex: 1,
-    borderWidth: 2,
-    borderColor: 'red',
   },
 });
 
