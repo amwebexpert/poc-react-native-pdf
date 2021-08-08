@@ -6,6 +6,7 @@ import PDFViewer from '../PDVViewer/PDFViewer';
 
 const Home = () => {
   const uri = 'http://samples.leanpub.com/thereactnativebook-sample.pdf';
+  // const uri = 'bundle-assets://pdf/demo.pdf'; // (Android only)
   const styles = useStyles();
 
   return (
