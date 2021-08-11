@@ -1,6 +1,8 @@
 # POC react-native-pdf
 
-POC for iOS and Android - View PDF files natively
+POC for iOS and Android - View PDF files natively.
+
+NOTE: look at `src/screens/PDVViewer/PDFViewer.tsx` for the viewer, which is used inside `Home.tsx`. The rest of the codebase is just bootstraping stuff of the native application copied from another project...
 
 
 Android                                                                                                | iPhone
